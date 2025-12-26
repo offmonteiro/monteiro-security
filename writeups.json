@@ -1,0 +1,13 @@
+{
+  "writeups": [
+    {
+      "title": "Template",
+      "platform": "htb",
+      "difficulty": "easy",
+      "description": "Template que será usado para documentar testes",
+      "tags": ["PDF"],
+      "date": "2025-12-26",
+      "pdf": "writeups/monteiro-writeup.pdf"
+    }
+  ]
+}
