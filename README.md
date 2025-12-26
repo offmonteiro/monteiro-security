@@ -1,11 +1,11 @@
 # 🔴 Monteiro Security - Writeups Platform
 
-Plataforma profissional para hospedar writeups de pentesting com visual inspirado no HackTheBox.
+Plataforma profissional para hospedar writeups de pentesting.
 
 ## 📁 Estrutura de Arquivos
 
 ```
-seu-repositorio/
+pentest-writeups/
 ├── index.html           # Página principal
 ├── writeups.json        # Arquivo de configuração dos writeups
 ├── Monteiro.png         # logo
