@@ -1,13 +1,13 @@
 {
   "writeups": [
     {
-      "title": "Template",
+      "title": "Cap",
       "platform": "htb",
       "difficulty": "easy",
-      "description": "Template que será usado para documentar testes",
-      "tags": ["PDF"],
-      "date": "2025-12-26",
-      "pdf": "writeups/monteiro-writeup.pdf"
+      "description": "Comprometimento total de servidor Linux através de falha de controle de acesso, captura de credenciais em texto claro e escalação de privilégios via capability mal configurada.",
+      "tags": ["Sniff", "Priv Scale", "Enum"],
+      "date": "2025-12-29",
+      "pdf": "writeups/htb-cap.pdf"
     }
   ]
 }
