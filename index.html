@@ -1,145 +1,863 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Monteiro | Pentest Writeups</title>
-  <meta name="description" content="Writeups detalhados de pentests e CTFs">
-  <link rel="icon" href="monteiro.png" type="image/png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <!-- Header -->
-  <header class="header">
-    <div class="container header-content">
-      <a href="/" class="logo">
-        <div class="logo-icon">
-          <img src="monteiro.png" alt="Monteiro Logo" width="24" height="24">
-        </div>
-        <span class="logo-text">Monteiro</span>
-      </a>
-      <nav class="nav">
-        <a href="#writeups" class="nav-link">Writeups</a>
-        <a href="https://github.com/seu-usuario" target="_blank" rel="noopener noreferrer" class="nav-link">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
-            <path d="M9 18c-4.51 2-5-2-7-2"/>
-          </svg>
-        </a>
-      </nav>
-    </div>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Monteiro Security - Pentesting Writeups</title>
+    <link rel="icon" type="image/png" href="Monteiro.png">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;700&family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="container hero-content">
-      <div class="hero-badge">
-        <span class="dot"></span>
-        Writeups Disponíveis
+      :root {
+        --primary-red: #ff3e3e;
+        --dark-bg: #0f0f0f;
+        --darker-bg: #0a0a0a;
+        --card-bg: #141b22;
+        --card-hover: #1a2332;
+        --border-color: #1e2d3d;
+        --text-primary: #e8eaed;
+        --text-secondary: #9ca3af;
+        --success: #00ff87;
+        --warning: #ffb800;
+        --danger: #ff3e3e;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: var(--dark-bg);
+        color: var(--text-primary);
+        min-height: 100vh;
+        line-height: 1.6;
+      }
+
+      .navbar {
+        background: var(--darker-bg);
+        border-bottom: 1px solid var(--border-color);
+        padding: 0;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        backdrop-filter: blur(10px);
+      }
+
+      .nav-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
+      }
+
+      .logo-section {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .logo {
+        width: 50px;
+        height: 50px;
+      }
+
+      .brand {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .brand-name {
+        font-size: 1.5em;
+        font-weight: 700;
+        color: var(--text-primary);
+        letter-spacing: -0.5px;
+      }
+
+      .brand-subtitle {
+        font-size: 0.75em;
+        color: var(--primary-red);
+        font-family: "Roboto Mono", monospace;
+        font-weight: 500;
+        letter-spacing: 2px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 30px;
+        list-style: none;
+      }
+
+      .nav-links a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 0.95em;
+        transition: color 0.3s ease;
+        font-weight: 500;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary-red);
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 40px;
+      }
+
+      .hero {
+        text-align: center;
+        padding: 60px 20px;
+        background: linear-gradient(
+          180deg,
+          var(--darker-bg) 0%,
+          var(--dark-bg) 100%
+        );
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .hero h1 {
+        font-size: 3em;
+        font-weight: 700;
+        margin-bottom: 15px;
+        background: linear-gradient(
+          135deg,
+          var(--text-primary) 0%,
+          var(--primary-red) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero-subtitle {
+        font-size: 1.2em;
+        color: var(--text-secondary);
+        font-weight: 300;
+        font-family: "Roboto Mono", monospace;
+      }
+
+      .stats-bar {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin: 40px 0;
+        padding: 30px;
+        background: var(--card-bg);
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+      }
+
+      .stat-box {
+        text-align: center;
+        padding: 20px;
+        border-right: 1px solid var(--border-color);
+      }
+
+      .stat-box:last-child {
+        border-right: none;
+      }
+
+      .stat-number {
+        font-size: 2.5em;
+        font-weight: 700;
+        color: var(--primary-red);
+        font-family: "Roboto Mono", monospace;
+      }
+
+      .stat-label {
+        font-size: 0.9em;
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-top: 5px;
+        font-weight: 500;
+      }
+
+      .filter-section {
+        background: var(--card-bg);
+        padding: 30px;
+        border-radius: 12px;
+        margin-bottom: 40px;
+        border: 1px solid var(--border-color);
+      }
+
+      .filter-group {
+        margin-bottom: 25px;
+      }
+
+      .filter-group:last-child {
+        margin-bottom: 0;
+      }
+
+      .filter-title {
+        font-size: 0.85em;
+        color: var(--primary-red);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 15px;
+        font-weight: 600;
+        font-family: "Roboto Mono", monospace;
+      }
+
+      .filter-options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .filter-chip {
+        padding: 10px 20px;
+        background: transparent;
+        border: 2px solid var(--border-color);
+        color: var(--text-secondary);
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 0.9em;
+        font-weight: 500;
+        font-family: "Roboto Mono", monospace;
+      }
+
+      .filter-chip:hover {
+        border-color: var(--primary-red);
+        color: var(--primary-red);
+        background: rgba(255, 62, 62, 0.05);
+      }
+
+      .filter-chip.active {
+        background: var(--primary-red);
+        color: var(--darker-bg);
+        border-color: var(--primary-red);
+      }
+
+      .search-container {
+        position: relative;
+      }
+
+      .search-input {
+        width: 100%;
+        padding: 15px 20px;
+        background: var(--darker-bg);
+        border: 2px solid var(--border-color);
+        border-radius: 8px;
+        color: var(--text-primary);
+        font-size: 1em;
+        font-family: "Roboto Mono", monospace;
+        transition: all 0.3s ease;
+      }
+
+      .search-input:focus {
+        outline: none;
+        border-color: var(--primary-red);
+        background: var(--dark-bg);
+      }
+
+      .search-input::placeholder {
+        color: var(--text-secondary);
+      }
+
+      .writeups-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+        gap: 25px;
+      }
+
+      .writeup-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 0;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        overflow: hidden;
+        position: relative;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+      }
+
+      .writeup-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--primary-red);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+      }
+
+      .writeup-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--primary-red);
+        background: var(--card-hover);
+        box-shadow: 0 20px 40px rgba(255, 62, 62, 0.1);
+      }
+
+      .writeup-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .card-content {
+        padding: 25px;
+      }
+
+      .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 15px;
+      }
+
+      .card-title {
+        font-size: 1.4em;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+      }
+
+      .platform-badge {
+        padding: 6px 14px;
+        border-radius: 6px;
+        font-size: 0.75em;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-family: "Roboto Mono", monospace;
+      }
+
+      .badge-htb {
+        background: linear-gradient(135deg, #9fef00 0%, #7bc900 100%);
+        color: #0a0a0a;
+      }
+
+      .badge-thm {
+        background: linear-gradient(135deg, #ff3e3e 0%, #cc0000 100%);
+        color: white;
+      }
+
+      .badge-ctf {
+        background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+        color: white;
+      }
+
+      .badge-bugbounty {
+        background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+        color: white;
+      }
+
+      .difficulty-indicator {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-size: 0.85em;
+        font-weight: 600;
+        font-family: "Roboto Mono", monospace;
+        margin-top: 8px;
+      }
+
+      .diff-easy {
+        background: rgba(0, 255, 135, 0.1);
+        color: var(--success);
+        border: 1px solid var(--success);
+      }
+
+      .diff-medium {
+        background: rgba(255, 184, 0, 0.1);
+        color: var(--warning);
+        border: 1px solid var(--warning);
+      }
+
+      .diff-hard {
+        background: rgba(255, 62, 62, 0.1);
+        color: var(--danger);
+        border: 1px solid var(--danger);
+      }
+
+      .diff-insane {
+        background: rgba(139, 0, 255, 0.1);
+        color: #bb86fc;
+        border: 1px solid #bb86fc;
+      }
+
+      .card-description {
+        color: var(--text-secondary);
+        font-size: 0.95em;
+        line-height: 1.7;
+        margin: 15px 0;
+      }
+
+      .tags-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 20px 0;
+      }
+
+      .tag {
+        padding: 6px 12px;
+        background: rgba(255, 62, 62, 0.1);
+        border: 1px solid rgba(255, 62, 62, 0.3);
+        border-radius: 6px;
+        font-size: 0.8em;
+        color: var(--primary-red);
+        font-family: "Roboto Mono", monospace;
+        font-weight: 500;
+      }
+
+      .card-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 25px;
+        background: var(--darker-bg);
+        border-top: 1px solid var(--border-color);
+        font-size: 0.85em;
+        color: var(--text-secondary);
+        font-family: "Roboto Mono", monospace;
+      }
+
+      .footer-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .pdf-icon {
+        color: var(--primary-red);
+        font-weight: bold;
+      }
+
+      .no-results {
+        text-align: center;
+        padding: 80px 20px;
+        color: var(--text-secondary);
+      }
+
+      .no-results-icon {
+        font-size: 4em;
+        margin-bottom: 20px;
+        opacity: 0.3;
+      }
+
+      .no-results-text {
+        font-size: 1.2em;
+        font-weight: 500;
+      }
+
+      .loading {
+        text-align: center;
+        padding: 80px 20px;
+        color: var(--text-secondary);
+      }
+
+      .loading-spinner {
+        font-size: 3em;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      @media (max-width: 1024px) {
+        .writeups-grid {
+          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        }
+
+        .nav-container {
+          padding: 20px 30px;
+        }
+
+        .container {
+          padding: 30px 20px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .writeups-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero h1 {
+          font-size: 2em;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .stats-bar {
+          grid-template-columns: 1fr;
+        }
+
+        .stat-box {
+          border-right: none;
+          border-bottom: 1px solid var(--border-color);
+        }
+
+        .stat-box:last-child {
+          border-bottom: none;
+        }
+      }
+
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--darker-bg);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--primary-red);
+        border-radius: 5px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: #cc3232;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="logo-section">
+          <img src="Monteiro.png" alt="Logo" class="logo" />
+          <div class="brand">
+            <div class="brand-name">Monteiro Security</div>
+            <div class="brand-subtitle">OFFENSIVE SECURITY</div>
+          </div>
+        </div>
+        <ul class="nav-links">
+          <li><a href="#writeups">Writeups</a></li>
+          <li><a href="#about">Sobre</a></li>
+        </ul>
       </div>
-      <h1 class="hero-title">Pentest <span class="text-primary">Writeups</span></h1>
-      <p class="hero-description">
-        Documentação detalhada de pentests realizados em plataformas como HackTheBox, TryHackMe, CTFs e programas de Bug Bounty.
+    </nav>
+
+    <section class="hero">
+      <h1>Penetration Testing Writeups</h1>
+      <p class="hero-subtitle">
+        // Offensive Security Research & CTF Solutions
       </p>
-    </div>
-  </section>
+    </section>
 
-  <!-- Filter Bar -->
-  <section class="filters" id="writeups">
     <div class="container">
-      <div class="filter-bar">
-        <div class="search-box">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon">
-            <circle cx="11" cy="11" r="8"/>
-            <path d="m21 21-4.3-4.3"/>
-          </svg>
-          <input type="text" id="searchInput" placeholder="Buscar writeups..." class="search-input">
+      <div class="stats-bar">
+        <div class="stat-box">
+          <div class="stat-number" id="total-count">0</div>
+          <div class="stat-label">Total Writeups</div>
         </div>
-        <div class="filter-buttons">
-          <select id="platformFilter" class="filter-select">
-            <option value="all">Todas Plataformas</option>
-            <option value="htb">HackTheBox</option>
-            <option value="thm">TryHackMe</option>
-            <option value="ctf">CTF</option>
-            <option value="bugbounty">Bug Bounty</option>
-          </select>
-          <select id="difficultyFilter" class="filter-select">
-            <option value="all">Todas Dificuldades</option>
-            <option value="easy">Easy</option>
-            <option value="medium">Medium</option>
-            <option value="hard">Hard</option>
-            <option value="insane">Insane</option>
-          </select>
+        <div class="stat-box">
+          <div class="stat-number" id="platform-count">0</div>
+          <div class="stat-label">Plataformas</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number" id="technique-count">0</div>
+          <div class="stat-label">Técnicas</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number" id="hard-count">0</div>
+          <div class="stat-label">Hard+</div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Writeups Grid -->
-  <main class="writeups-section">
-    <div class="container">
-      <div id="writeupsGrid" class="writeups-grid">
-        <!-- Writeups serão inseridos via JavaScript -->
-      </div>
-      <div id="emptyState" class="empty-state" style="display: none;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="empty-icon">
-          <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/>
-          <path d="M14 2v4a2 2 0 0 0 2 2h4"/>
-          <path d="M10 12a1 1 0 0 0-1 1v1a1 1 0 0 1-1 1 1 1 0 0 1 1 1v1a1 1 0 0 0 1 1"/>
-          <path d="M14 18a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1 1 1 0 0 1-1-1v-1a1 1 0 0 0-1-1"/>
-        </svg>
-        <h3>Nenhum writeup encontrado</h3>
-        <p>Tente ajustar os filtros de busca</p>
-      </div>
-    </div>
-  </main>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container footer-content">
-      <div class="footer-brand">
-        <div class="logo">
-          <div class="logo-icon-sm">
-            <img src="monteiro.png" alt="Monteiro Logo" width="20" height="20">
-          </div>
-          <div class="footer-brand-info">
-            <p class="footer-brand-name">Monteiro</p>
-            <p class="footer-brand-desc">Pentest Writeups & Security Research</p>
+      <div class="filter-section">
+        <div class="filter-group">
+          <div class="filter-title">// PLATAFORMA</div>
+          <div class="filter-options" id="platform-filters">
+            <button
+              class="filter-chip active"
+              data-filter="platform"
+              data-value="all"
+            >
+              Todas
+            </button>
           </div>
         </div>
-      </div>
-      <div class="footer-links">
-        <a href="https://github.com/seu-usuario" target="_blank" rel="noopener noreferrer" class="footer-link" aria-label="GitHub">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
-            <path d="M9 18c-4.51 2-5-2-7-2"/>
-          </svg>
-        </a>
-        <a href="https://linkedin.com/in/seu-usuario" target="_blank" rel="noopener noreferrer" class="footer-link" aria-label="LinkedIn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-            <rect width="4" height="12" x="2" y="9"/>
-            <circle cx="4" cy="4" r="2"/>
-          </svg>
-        </a>
-        <a href="mailto:seu@email.com" class="footer-link" aria-label="Email">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect width="20" height="16" x="2" y="4" rx="2"/>
-            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-          </svg>
-        </a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div class="container">
-        <p>&copy; 2025 Monteiro. Todos os direitos reservados.</p>
-      </div>
-    </div>
-  </footer>
 
-  <script src="script.js"></script>
-</body>
+        <div class="filter-group">
+          <div class="filter-title">// DIFICULDADE</div>
+          <div class="filter-options">
+            <button
+              class="filter-chip active"
+              data-filter="difficulty"
+              data-value="all"
+            >
+              Todas
+            </button>
+            <button
+              class="filter-chip"
+              data-filter="difficulty"
+              data-value="easy"
+            >
+              Easy
+            </button>
+            <button
+              class="filter-chip"
+              data-filter="difficulty"
+              data-value="medium"
+            >
+              Medium
+            </button>
+            <button
+              class="filter-chip"
+              data-filter="difficulty"
+              data-value="hard"
+            >
+              Hard
+            </button>
+            <button
+              class="filter-chip"
+              data-filter="difficulty"
+              data-value="insane"
+            >
+              Insane
+            </button>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-title">// BUSCAR</div>
+          <div class="search-container">
+            <input
+              type="text"
+              class="search-input"
+              id="search"
+              placeholder="Buscar por título, técnica ou descrição..."
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="loading" id="loading">
+        <div class="loading-spinner">⚙️</div>
+        <div>Carregando writeups...</div>
+      </div>
+
+      <div class="writeups-grid" id="writeups-grid" style="display: none">
+        <!-- Writeups serão inseridos aqui -->
+      </div>
+
+      <div class="no-results" id="no-results" style="display: none">
+        <div class="no-results-icon">🔍</div>
+        <div class="no-results-text">Nenhum writeup encontrado</div>
+      </div>
+    </div>
+
+    <script>
+      let allWriteups = [];
+      let filters = {
+        platform: "all",
+        difficulty: "all",
+        search: "",
+      };
+
+      // Carrega os writeups do arquivo JSON
+      async function loadWriteups() {
+        try {
+          const response = await fetch("writeups.json");
+          if (!response.ok)
+            throw new Error("Arquivo writeups.json não encontrado");
+
+          const data = await response.json();
+          allWriteups = data.writeups;
+
+          initializePlatformFilters();
+          updateStats();
+          renderWriteups();
+
+          document.getElementById("loading").style.display = "none";
+          document.getElementById("writeups-grid").style.display = "grid";
+        } catch (error) {
+          console.error("Erro ao carregar writeups:", error);
+          document.getElementById("loading").innerHTML = `
+                    <div class="no-results-icon">⚠️</div>
+                    <div class="no-results-text">Erro ao carregar writeups. Verifique se o arquivo writeups.json existe.</div>
+                `;
+        }
+      }
+
+      function initializePlatformFilters() {
+        const platforms = [...new Set(allWriteups.map((w) => w.platform))];
+        const platformFilters = document.getElementById("platform-filters");
+
+        const additionalButtons = platforms
+          .map(
+            (platform) => `
+                <button class="filter-chip" data-filter="platform" data-value="${platform}">
+                    ${getPlatformName(platform)}
+                </button>
+            `
+          )
+          .join("");
+
+        platformFilters.innerHTML += additionalButtons;
+
+        // Re-adiciona event listeners
+        attachFilterListeners();
+      }
+
+      function updateStats() {
+        const platforms = new Set(allWriteups.map((w) => w.platform));
+        const techniques = new Set(allWriteups.flatMap((w) => w.tags));
+        const hardCount = allWriteups.filter(
+          (w) => w.difficulty === "hard" || w.difficulty === "insane"
+        ).length;
+
+        document.getElementById("total-count").textContent = allWriteups.length;
+        document.getElementById("platform-count").textContent = platforms.size;
+        document.getElementById("technique-count").textContent =
+          techniques.size;
+        document.getElementById("hard-count").textContent = hardCount;
+      }
+
+      function renderWriteups() {
+        const grid = document.getElementById("writeups-grid");
+        const noResults = document.getElementById("no-results");
+
+        const filtered = allWriteups.filter((w) => {
+          const platformMatch =
+            filters.platform === "all" || w.platform === filters.platform;
+          const difficultyMatch =
+            filters.difficulty === "all" || w.difficulty === filters.difficulty;
+          const searchTerm = filters.search.toLowerCase();
+          const searchMatch =
+            !searchTerm ||
+            w.title.toLowerCase().includes(searchTerm) ||
+            w.description.toLowerCase().includes(searchTerm) ||
+            w.tags.some((tag) => tag.toLowerCase().includes(searchTerm));
+
+          return platformMatch && difficultyMatch && searchMatch;
+        });
+
+        if (filtered.length === 0) {
+          grid.style.display = "none";
+          noResults.style.display = "block";
+          return;
+        }
+
+        grid.style.display = "grid";
+        noResults.style.display = "none";
+
+        grid.innerHTML = filtered
+          .map(
+            (w) => `
+                <a href="${w.pdf}" target="_blank" class="writeup-card">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div>
+                                <h3 class="card-title">${w.title}</h3>
+                                <div class="difficulty-indicator diff-${
+                                  w.difficulty
+                                }">
+                                    <span>●</span> ${w.difficulty.toUpperCase()}
+                                </div>
+                            </div>
+                            <span class="platform-badge badge-${
+                              w.platform
+                            }">${getPlatformName(w.platform)}</span>
+                        </div>
+                        <p class="card-description">${w.description}</p>
+                        <div class="tags-container">
+                            ${w.tags
+                              .map((tag) => `<span class="tag">${tag}</span>`)
+                              .join("")}
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="footer-item">
+                            <span>📅</span>
+                            <span>${formatDate(w.date)}</span>
+                        </div>
+                        <div class="footer-item">
+                            <span class="pdf-icon">📄 PDF</span>
+                        </div>
+                    </div>
+                </a>
+            `
+          )
+          .join("");
+      }
+
+      function getPlatformName(platform) {
+        const names = {
+          htb: "HTB",
+          thm: "THM",
+          ctf: "CTF",
+          bugbounty: "BUG BOUNTY",
+        };
+        return names[platform] || platform.toUpperCase();
+      }
+
+      function formatDate(dateStr) {
+        const months = [
+          "Jan",
+          "Fev",
+          "Mar",
+          "Abr",
+          "Mai",
+          "Jun",
+          "Jul",
+          "Ago",
+          "Set",
+          "Out",
+          "Nov",
+          "Dez",
+        ];
+        const date = new Date(dateStr);
+        return `${date.getDate()} ${
+          months[date.getMonth()]
+        } ${date.getFullYear()}`;
+      }
+
+      function attachFilterListeners() {
+        document.querySelectorAll(".filter-chip").forEach((chip) => {
+          chip.addEventListener("click", function () {
+            const filterType = this.dataset.filter;
+            const value = this.dataset.value;
+
+            document
+              .querySelectorAll(`[data-filter="${filterType}"]`)
+              .forEach((c) => {
+                c.classList.remove("active");
+              });
+
+            this.classList.add("active");
+            filters[filterType] = value;
+            renderWriteups();
+          });
+        });
+      }
+
+      // Event listeners
+      document.getElementById("search").addEventListener("input", function (e) {
+        filters.search = e.target.value;
+        renderWriteups();
+      });
+
+      // Inicializa filtros de dificuldade
+      attachFilterListeners();
+
+      // Carrega writeups ao iniciar
+      loadWriteups();
+    </script>
+  </body>
 </html>
