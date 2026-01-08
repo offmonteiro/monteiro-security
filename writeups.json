@@ -8,6 +8,15 @@
       "tags": ["Sniffing", "Privilege Scalation", "Enumeration"],
       "date": "2025-12-29",
       "pdf": "writeups/htb-cap.pdf"
+    },
+    {
+      "title": "Lame",
+      "platform": "htb",
+      "difficulty": "easy",
+      "description": "Máquina Linux com Samba 3.0.20 vulnerável a RCE (CVE-2007-2447), permitindo shell root direto sem autenticação via injeção de comandos no campo username.",
+      "tags": ["Enumeration", "SMB Enumeration", "Exploitation", "Metasploit Usage"],
+      "date": "2025-12-29",
+      "pdf": "writeups/htb-lame.pdf"
     }
   ]
 }
