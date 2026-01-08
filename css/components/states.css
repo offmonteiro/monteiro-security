@@ -1,0 +1,109 @@
+/* ============================================
+   STATE COMPONENTS
+   Loading, empty, error states
+   ============================================ */
+
+/* Container */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--space-10) var(--container-padding);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: var(--space-6) var(--container-padding-mobile);
+  }
+}
+
+/* Loading State */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-20) var(--space-5);
+  color: var(--fluent-text-tertiary);
+}
+
+.loading-spinner {
+  width: 48px;
+  height: 48px;
+  border: 3px solid var(--fluent-stroke-default);
+  border-top-color: var(--fluent-accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: var(--space-4);
+}
+
+.loading-text {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+}
+
+/* No Results State */
+.no-results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-20) var(--space-5);
+  color: var(--fluent-text-tertiary);
+}
+
+.no-results-icon {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--fluent-bg-layer-1);
+  border: 1px solid var(--fluent-stroke-default);
+  border-radius: var(--radius-lg);
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-4);
+  opacity: 0.5;
+}
+
+.no-results-text {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-medium);
+  color: var(--fluent-text-secondary);
+}
+
+.no-results-hint {
+  font-size: var(--text-sm);
+  color: var(--fluent-text-tertiary);
+  margin-top: var(--space-2);
+}
+
+/* Error State */
+.error-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-20) var(--space-5);
+  color: var(--fluent-text-tertiary);
+}
+
+.error-icon {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--fluent-danger-subtle);
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  border-radius: var(--radius-lg);
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-bold);
+  color: var(--fluent-danger);
+  margin-bottom: var(--space-4);
+}
+
+.error-text {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-medium);
+  color: var(--fluent-text-secondary);
+}

@@ -1,0 +1,20 @@
+/* ============================================
+   MONTEIRO SECURITY - MAIN STYLESHEET
+   Fluent Design System
+   ============================================ */
+
+/* Design System */
+@import url('design-system/variables.css');
+@import url('design-system/reset.css');
+@import url('design-system/animations.css');
+
+/* Components */
+@import url('components/navbar.css');
+@import url('components/hero.css');
+@import url('components/stats.css');
+@import url('components/filters.css');
+@import url('components/cards.css');
+@import url('components/states.css');
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;600;700&display=swap');

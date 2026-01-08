@@ -1,0 +1,132 @@
+/* ============================================
+   FLUENT DESIGN SYSTEM - DESIGN TOKENS
+   Microsoft Fluent Design 2 inspired
+   ============================================ */
+
+:root {
+  /* === BACKGROUND LAYERS (Mica-inspired depth) === */
+  --fluent-bg-base: #1a1a1a;
+  --fluent-bg-layer-1: #202020;
+  --fluent-bg-layer-2: #2a2a2a;
+  --fluent-bg-layer-3: #333333;
+  --fluent-bg-mica: rgba(32, 32, 32, 0.85);
+  --fluent-bg-acrylic: rgba(32, 32, 32, 0.65);
+
+  /* === ACCENT COLOR (Brand red) === */
+  --fluent-accent: #ff3e3e;
+  --fluent-accent-hover: #ff5c5c;
+  --fluent-accent-pressed: #e63636;
+  --fluent-accent-subtle: rgba(255, 62, 62, 0.15);
+  --fluent-accent-subtle-hover: rgba(255, 62, 62, 0.25);
+
+  /* === TEXT COLORS === */
+  --fluent-text-primary: #ffffff;
+  --fluent-text-secondary: rgba(255, 255, 255, 0.78);
+  --fluent-text-tertiary: rgba(255, 255, 255, 0.55);
+  --fluent-text-disabled: rgba(255, 255, 255, 0.36);
+  --fluent-text-accent: var(--fluent-accent);
+
+  /* === BORDERS AND STROKES === */
+  --fluent-stroke-default: rgba(255, 255, 255, 0.08);
+  --fluent-stroke-subtle: rgba(255, 255, 255, 0.04);
+  --fluent-stroke-strong: rgba(255, 255, 255, 0.14);
+  --fluent-stroke-focus: var(--fluent-accent);
+
+  /* === SEMANTIC COLORS === */
+  --fluent-success: #6ccb5f;
+  --fluent-success-subtle: rgba(108, 203, 95, 0.15);
+  --fluent-warning: #fcb316;
+  --fluent-warning-subtle: rgba(252, 179, 22, 0.15);
+  --fluent-danger: #ff6b6b;
+  --fluent-danger-subtle: rgba(255, 107, 107, 0.15);
+  --fluent-info: #60cdff;
+  --fluent-info-subtle: rgba(96, 205, 255, 0.15);
+  --fluent-insane: #bb86fc;
+  --fluent-insane-subtle: rgba(187, 134, 252, 0.15);
+
+  /* === PLATFORM BADGE COLORS === */
+  --badge-htb: #9fef00;
+  --badge-htb-text: #0a0a0a;
+  --badge-thm: #ff3e3e;
+  --badge-thm-text: #ffffff;
+  --badge-ctf: #ff6b35;
+  --badge-ctf-text: #ffffff;
+  --badge-bugbounty: #60cdff;
+  --badge-bugbounty-text: #0a0a0a;
+
+  /* === SPACING SCALE (4px base) === */
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  /* === CONTAINER === */
+  --container-max: 1400px;
+  --container-padding: var(--space-10);
+  --container-padding-mobile: var(--space-5);
+
+  /* === BORDER RADIUS === */
+  --radius-none: 0;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* === ELEVATION SHADOWS === */
+  --shadow-none: none;
+  --shadow-2: 0 1px 2px rgba(0, 0, 0, 0.14), 0 0 2px rgba(0, 0, 0, 0.12);
+  --shadow-4: 0 2px 4px rgba(0, 0, 0, 0.14), 0 0 2px rgba(0, 0, 0, 0.12);
+  --shadow-8: 0 4px 8px rgba(0, 0, 0, 0.14), 0 0 2px rgba(0, 0, 0, 0.12);
+  --shadow-16: 0 8px 16px rgba(0, 0, 0, 0.14), 0 0 2px rgba(0, 0, 0, 0.12);
+  --shadow-28: 0 14px 28px rgba(0, 0, 0, 0.14), 0 0 8px rgba(0, 0, 0, 0.12);
+  --shadow-accent: 0 8px 24px rgba(255, 62, 62, 0.25);
+
+  /* === TYPOGRAPHY === */
+  --font-display: 'Segoe UI Variable Display', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-body: 'Segoe UI Variable Text', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Cascadia Code', 'Roboto Mono', 'Consolas', monospace;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+
+  --leading-tight: 1.25;
+  --leading-snug: 1.375;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+
+  /* === ANIMATION TIMING === */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 350ms;
+  --duration-slower: 500ms;
+
+  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --transition-fast: var(--duration-fast) var(--ease-default);
+  --transition-normal: var(--duration-normal) var(--ease-default);
+  --transition-slow: var(--duration-slow) var(--ease-default);
+}

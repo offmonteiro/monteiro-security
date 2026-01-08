@@ -1,0 +1,52 @@
+/* ============================================
+   HERO COMPONENT
+   Clean typography with subtle gradient
+   ============================================ */
+
+.hero {
+  text-align: center;
+  padding: var(--space-16) var(--container-padding-mobile);
+  background: linear-gradient(
+    180deg,
+    var(--fluent-bg-base) 0%,
+    var(--fluent-bg-layer-1) 100%
+  );
+  border-bottom: 1px solid var(--fluent-stroke-subtle);
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: var(--text-5xl);
+  font-weight: var(--weight-bold);
+  color: var(--fluent-text-primary);
+  margin-bottom: var(--space-4);
+  letter-spacing: -0.03em;
+  line-height: var(--leading-tight);
+}
+
+.hero-title .accent {
+  color: var(--fluent-accent);
+}
+
+.hero-subtitle {
+  font-family: var(--font-mono);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-regular);
+  color: var(--fluent-text-tertiary);
+  letter-spacing: 0.02em;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero {
+    padding: var(--space-12) var(--container-padding-mobile);
+  }
+
+  .hero-title {
+    font-size: var(--text-3xl);
+  }
+
+  .hero-subtitle {
+    font-size: var(--text-base);
+  }
+}
