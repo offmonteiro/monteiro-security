@@ -22,10 +22,19 @@
       "title": "Nibbles",
       "platform": "htb",
       "difficulty": "easy",
-      "description": "Servidor Linux com Nibbleblog 4.0.3 vulnerável a upload arbitrário de arquivos via credenciais padrão, escalando para root através de permissão sudo mal configurada.**",
+      "description": "Servidor Linux com Nibbleblog 4.0.3 vulnerável a upload arbitrário de arquivos via credenciais padrão, escalando para root através de permissão sudo mal configurada.",
       "tags": ["Enumeration", "Reverse Shell", "Privilege Scalation"],
       "date": "2026-1-09",
       "pdf": "writeups/htb-nibbles.pdf"
+    },
+    {
+      "title": "Blue",
+      "platform": "htb",
+      "difficulty": "easy",
+      "description": "Blue, while possibly the most simple machine on Hack The Box, demonstrates the severity of the EternalBlue exploit, which has been used in multiple large-scale ransomware and crypto-mining attacks since it was leaked publicly.",
+      "tags": ["Enumeration", "Exploitation", "Metasploit Usage"],
+      "date": "2026-1-13",
+      "pdf": "writeups/htb-blue.pdf"
     }
   ]
 }
