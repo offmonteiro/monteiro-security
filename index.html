@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Monteiro Security - Plataforma de writeups de pentesting e CTF">
+  <meta name="description" content="Monteiro Security - Platform for pentesting and CTF writeups">
   <title>Monteiro Security - Pentesting Writeups</title>
   <link rel="icon" type="image/png" href="Monteiro.png">
   <link rel="stylesheet" href="css/main.css">
@@ -38,11 +38,11 @@
       </div>
       <div class="stat-card">
         <div class="stat-number" id="platform-count">0</div>
-        <div class="stat-label">Plataformas</div>
+        <div class="stat-label">Platforms</div>
       </div>
       <div class="stat-card">
         <div class="stat-number" id="technique-count">0</div>
-        <div class="stat-label">Tecnicas</div>
+        <div class="stat-label">Techniques</div>
       </div>
       <div class="stat-card">
         <div class="stat-number" id="hard-count">0</div>
@@ -53,16 +53,16 @@
     <!-- Filters -->
     <section class="filter-section">
       <div class="filter-group">
-        <div class="filter-title">// Plataforma</div>
+        <div class="filter-title">// Platform</div>
         <div class="filter-chips" id="platform-filters">
-          <button class="filter-chip active" data-filter="platform" data-value="all">Todas</button>
+          <button class="filter-chip active" data-filter="platform" data-value="all">All</button>
         </div>
       </div>
 
       <div class="filter-group">
-        <div class="filter-title">// Dificuldade</div>
+        <div class="filter-title">// Difficulty</div>
         <div class="filter-chips">
-          <button class="filter-chip active" data-filter="difficulty" data-value="all">Todas</button>
+          <button class="filter-chip active" data-filter="difficulty" data-value="all">All</button>
           <button class="filter-chip" data-filter="difficulty" data-value="easy">Easy</button>
           <button class="filter-chip" data-filter="difficulty" data-value="medium">Medium</button>
           <button class="filter-chip" data-filter="difficulty" data-value="hard">Hard</button>
@@ -71,14 +71,14 @@
       </div>
 
       <div class="filter-group">
-        <div class="filter-title">// Buscar</div>
+        <div class="filter-title">// Search</div>
         <div class="search-container">
           <span class="search-icon">&#128269;</span>
           <input
             type="text"
             class="search-input"
             id="search"
-            placeholder="Buscar por titulo, tecnica ou descricao..."
+            placeholder="Search by title, technique, or description..."
             autocomplete="off"
           >
         </div>
@@ -88,7 +88,7 @@
     <!-- Loading State -->
     <div id="loading" class="loading">
       <div class="loading-spinner"></div>
-      <p class="loading-text">Carregando writeups...</p>
+      <p class="loading-text">Loading writeups...</p>
     </div>
 
     <!-- Writeups Grid -->
@@ -97,8 +97,8 @@
     <!-- No Results -->
     <div class="no-results" id="no-results" style="display: none;">
       <div class="no-results-icon">?</div>
-      <p class="no-results-text">Nenhum writeup encontrado</p>
-      <p class="no-results-hint">Tente ajustar os filtros ou a busca</p>
+      <p class="no-results-text">No writeups found</p>
+      <p class="no-results-hint">Try adjusting the filters or search</p>
     </div>
   </main>
 
