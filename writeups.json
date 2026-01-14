@@ -4,7 +4,7 @@
       "title": "Cap",
       "platform": "htb",
       "difficulty": "easy",
-      "description": "Comprometimento total de servidor Linux através de falha de controle de acesso, captura de credenciais em texto claro e escalação de privilégios via capability mal configurada.",
+      "description": "Complete Linux server compromise through access control failure, plaintext credential capture, and privilege escalation via misconfigured capability.",
       "tags": ["Sniffing", "Privilege Scalation", "Enumeration"],
       "date": "2025-12-29",
       "pdf": "writeups/htb-cap.pdf"
@@ -13,7 +13,7 @@
       "title": "Lame",
       "platform": "htb",
       "difficulty": "easy",
-      "description": "Máquina Linux com Samba 3.0.20 vulnerável a RCE (CVE-2007-2447), permitindo shell root direto sem autenticação via injeção de comandos no campo username.",
+      "description": "Linux machine with Samba 3.0.20 vulnerable to RCE (CVE-2007-2447), allowing direct root shell without authentication via command injection in the username field.",
       "tags": ["Enumeration", "SMB Enumeration", "Exploitation", "Metasploit Usage"],
       "date": "2026-1-08",
       "pdf": "writeups/htb-lame.pdf"
@@ -22,7 +22,7 @@
       "title": "Nibbles",
       "platform": "htb",
       "difficulty": "easy",
-      "description": "Servidor Linux com Nibbleblog 4.0.3 vulnerável a upload arbitrário de arquivos via credenciais padrão, escalando para root através de permissão sudo mal configurada.",
+      "description": "Linux server with Nibbleblog 4.0.3 vulnerable to arbitrary file upload via default credentials, escalating to root through misconfigured sudo permission.",
       "tags": ["Enumeration", "Reverse Shell", "Privilege Scalation"],
       "date": "2026-1-09",
       "pdf": "writeups/htb-nibbles.pdf"
