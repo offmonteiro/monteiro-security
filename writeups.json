@@ -35,6 +35,15 @@
       "tags": ["Enumeration", "Exploitation", "Metasploit Usage"],
       "date": "2026-1-13",
       "pdf": "writeups/htb-blue.pdf"
+    },
+    {
+      "title": "Mr Robot CTF",
+      "platform": "thm",
+      "difficulty": "medium",
+      "description": "Mr Robot CTF is a vulnerable Linux machine designed to teach fundamental penetration testing skills through a pop-culture themed challenge. The machine simulates a real-world scenario where attackers must enumerate services, exploit web vulnerabilities, and escalate privileges to achieve root access.",
+      "tags": ["Enumeration", "Web Enumeration", "WordPress Exploitation", "Password Cracking", "SUID Exploitation"],
+      "date": "2026-1-14",
+      "pdf": "writeups/thm-mrrobotctf.pdf"
     }
   ]
 }
