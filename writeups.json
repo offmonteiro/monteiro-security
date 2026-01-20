@@ -49,7 +49,7 @@
       "title": "Jerry",
       "platform": "htb",
       "difficulty": "easy",
-      "description": "Jerry is an easy-difficulty Windows machine that showcases how to exploit Apache Tomcat, leading to an NT Authority\SYSTEM shell, thus fully compromising the target.",
+      "description": "Jerry is an easy-difficulty Windows machine that showcases how to exploit Apache Tomcat, leading to an NT Authority|SYSTEM shell, thus fully compromising the target.",
       "tags": ["Enumeration", "Reverse Shell", "Metasploit Usage"],
       "date": "2026-1-19",
       "pdf": "writeups/htb-jerry.pdf"
