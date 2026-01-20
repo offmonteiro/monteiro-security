@@ -44,6 +44,15 @@
       "tags": ["Enumeration", "Web Enumeration", "WordPress Exploitation", "Password Cracking", "SUID Exploitation"],
       "date": "2026-1-14",
       "pdf": "writeups/thm-mrrobotctf.pdf"
+    },
+    {
+      "title": "Jerry",
+      "platform": "htb",
+      "difficulty": "easy",
+      "description": "Jerry is an easy-difficulty Windows machine that showcases how to exploit Apache Tomcat, leading to an NT Authority\SYSTEM shell, thus fully compromising the target.",
+      "tags": ["Enumeration", "Reverse Shell", "Metasploit Usage"],
+      "date": "2026-1-19",
+      "pdf": "writeups/htb-jerry.pdf"
     }
   ]
 }
